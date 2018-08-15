@@ -11,7 +11,7 @@ var { User } = require('./models/User')
 const { ObjectID } = require('mongodb')
 
 var app = express()
-const port = 3000 // process.env.PORT
+const port = process.env.PORT; // process.env.PORT
 app.use(bodyParser.json())
 app.post('/todos', (req, res) => {
   var todo = new Todo({
