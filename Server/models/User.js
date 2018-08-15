@@ -35,7 +35,7 @@ var UserSchema = new mongoose.Schema({
   ]
 })
 
-UserSchema.pre('save',function(next){
+/*UserSchema.pre('save',function(next){
     var user = this;
     
     if(user.isModified('password')){
@@ -49,6 +49,21 @@ UserSchema.pre('save',function(next){
         next();
     }
         
+});*/
+
+UserSchema.pre('save', function (next) {
+  var user = this;
+
+  if (user.isModified('password')) {
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(user.password, salt, (err, hash) => {
+        user.password = hash;
+        next();
+      });
+    });
+  } else {
+    next();
+  }
 });
 
 UserSchema.statics.findByToken=function(token){
