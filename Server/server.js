@@ -112,7 +112,7 @@ app.patch('/todos/:id', (req, res) => {
 app.get('/users/me',(req,res)=>{
     var token = req.header('x-auth');
     
-    User.findbyToken(token).then((user)=>{
+    User.findByToken(token).then((user)=>{
         if(!user){
             
         }
