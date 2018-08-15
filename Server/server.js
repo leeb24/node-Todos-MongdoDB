@@ -109,7 +109,7 @@ app.patch('/todos/:id', (req, res) => {
       res.status(400).send()
     })
 })
-
+//Token for login process
 app.post('/users/login',(req,res)=>{
     var body = _.pick(req.body, ['email', 'password'])
     
@@ -143,6 +143,14 @@ app.post('/users', (req, res) => {
     })
     .catch(e => {
       res.status(400).send(e)
+    })
+})
+
+app.delete('/users/me/token',authenticate,(req,res)=>{
+    req.user.removeToken(req.token).then(()=>{
+        res.status(200).send();
+    }, () =>{
+        res.status(400).send();
     })
 })
 
