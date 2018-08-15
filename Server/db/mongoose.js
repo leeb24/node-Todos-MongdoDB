@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://test:dlqudtjf24@ds119422.mlab.com:19422/test-todo-db')
+mongoose.connect(process.env.MONGODB_URI)
 // mongodb://test:dlqudtjf24@ds119422.mlab.com:19422/test-todo-db
 //DB 
 module.exports = {
