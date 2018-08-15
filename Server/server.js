@@ -114,10 +114,12 @@ app.get('/users/me',(req,res)=>{
     
     User.findByToken(token).then((user)=>{
         if(!user){
-            
+            return res.status(400).send();
         }
         
         res.send(user);
+    }).catch((e)=>{
+        res.status(400).send();
     });
 });
 
