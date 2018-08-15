@@ -110,22 +110,18 @@ app.patch('/todos/:id', (req, res) => {
     })
 })
 
-/*var authenticate = (req,res,next) => {
-    var token = req.header('x-auth');
+app.post('/users/login',(req,res)=>{
+    var body = _.pick(req.body, ['email', 'password'])
     
-    User.findByToken(token).then((user)=>{
-        if(!user){
-            return res.status(400).send();
-        }
-        
-        req.user = user;
-        req.token = token;
-        next();
+    User.findByCredentials(body.email,body.password).then((user)=>{
+        res.send(user);
     }).catch((e)=>{
         res.status(400).send();
     });
-};*/
+    
+});
 
+//Private route, header needs to have valid token
 app.get('/users/me',authenticate,(req,res)=>{
    res.send(req.user);
 });
