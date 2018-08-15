@@ -110,7 +110,7 @@ app.patch('/todos/:id', (req, res) => {
     })
 })
 
-var authenticate = (req,res,next) => {
+/*var authenticate = (req,res,next) => {
     var token = req.header('x-auth');
     
     User.findByToken(token).then((user)=>{
@@ -124,7 +124,7 @@ var authenticate = (req,res,next) => {
     }).catch((e)=>{
         res.status(400).send();
     });
-};
+};*/
 
 app.get('/users/me',authenticate,(req,res)=>{
    res.send(req.user);
