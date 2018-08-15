@@ -1,4 +1,5 @@
 var {User} = require ('./../models/User');
+
 var authenticate = (req,res,next) => {
     var token = req.header('x-auth');
     
@@ -15,4 +16,4 @@ var authenticate = (req,res,next) => {
     });
 };
 
-module.export = {authenticate};
+module.exports = {authenticate};
