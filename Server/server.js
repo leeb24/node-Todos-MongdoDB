@@ -8,7 +8,7 @@ var bodyParser = require('body-parser')
 var { mongoose } = require('./db/mongoose')
 var { Todo } = require('./models/Todo')
 var { User } = require('./models/User')
-var {authenticate} = require('./middleware/authenticate')
+var { authenticate } = require('./middleware/authenticate')
 const { ObjectID } = require('mongodb')
 
 var app = express()
