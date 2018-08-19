@@ -3,7 +3,6 @@
 const _ = require('lodash')
 var express = require('express')
 var bodyParser = require('body-parser')
-
 // LOCAL IMPORTS
 var { mongoose } = require('./db/mongoose')
 var { Todo } = require('./models/Todo')
@@ -14,6 +13,7 @@ const { ObjectID } = require('mongodb')
 var app = express()
 const port = process.env.PORT; // process.env.PORT
 app.use(bodyParser.json())
+
 app.post('/todos', (req, res) => {
   var todo = new Todo({
     text: req.body.text
@@ -38,6 +38,8 @@ app.get('/todos', (req, res) => {
     }
   )
 })
+
+// 
 
 // GET /todos/12345  <= access by req.params obj
 app.get('/todos/:id', (req, res) => {
